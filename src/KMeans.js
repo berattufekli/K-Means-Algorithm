@@ -30,7 +30,7 @@ function KMeans() {
         setFirstAttribute([...firstAttribute, values.firstAttribute]);
         setSecondAttribute([...secondAttribute, values.secondAttribute]);
         values.firstAttribute = "";
-        values.firstAttribute = "";
+        values.secondAttribute = "";
       } else {
         setFirstAttribute([...firstAttribute, values.firstAttribute]);
         setSecondAttribute([...secondAttribute, 0]);
