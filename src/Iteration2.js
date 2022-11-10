@@ -13,7 +13,7 @@ import Plot from 'react-plotly.js';
 import { useFormik } from 'formik'
 
 
-function Iteration() {
+function Iteration2() {
   const useForm = useRef(); 
 
   const firstAttrMin = JSON.stringify(localStorage.getItem("firstAttrMin"))
@@ -31,12 +31,12 @@ function Iteration() {
   .replace(/[&\\#+()$~%.'":*?<>{}]/g, "")
 
   const [centroid1, setCentroid1] = useState({
-    x: twoAttr === "1" ? Math.round(Math.random() * (firstAttrMax - firstAttrMin) + firstAttrMin) : Math.random().toFixed(2),
-    y: twoAttr === "1" ? Math.round(Math.random() * (secondAttrMax - secondAttrMin) + secondAttrMin) : Math.random().toFixed(2),
+    x: twoAttr === "1" ? Math.round(Math.random() * (firstAttrMax - firstAttrMin) + firstAttrMin) : Math.random().toFixed(4),
+    y: twoAttr === "1" ? Math.round(Math.random() * (secondAttrMax - secondAttrMin) + secondAttrMin) : Math.random().toFixed(4),
   });
   const [centroid2, setCentroid2] = useState({
-    x: twoAttr === "1" ? Math.round(Math.random() * (firstAttrMax - firstAttrMin) + firstAttrMin) : Math.random().toFixed(2),
-    y: twoAttr === "1" ? Math.round(Math.random() * (secondAttrMax - secondAttrMin) + secondAttrMin) : Math.random().toFixed(2),
+    x: twoAttr === "1" ? Math.round(Math.random() * (firstAttrMax - firstAttrMin) + firstAttrMin) : Math.random().toFixed(4),
+    y: twoAttr === "1" ? Math.round(Math.random() * (secondAttrMax - secondAttrMin) + secondAttrMin) : Math.random().toFixed(4),
   });
   
   const { handleSubmit, handleChange, values } = useFormik({
@@ -565,4 +565,4 @@ function Iteration() {
   );
 }
 
-export default Iteration
+export default Iteration2

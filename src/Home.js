@@ -1,68 +1,92 @@
-import { Center, Text, Flex, Heading, Input, Button } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import Plot from 'react-plotly.js';
-import { Link } from 'react-router-dom';
-
+import { Button, Text, Center, Flex, Heading } from '@chakra-ui/react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
-  const [value, setValue] = useState();
-
-  const [xvalues, setxValues] = useState([]);
-  const [yvalues, setyValues] = useState([]);
-
-  const handleChange = event => {
-    event.preventDefault();
-    setValue(event.target.value);
-  };
-
-  const handleClick = event => {
-    event.preventDefault();
-
-    setxValues([...xvalues, value]);
-    setyValues([...yvalues, 0]);
-    setValue("");
-  };
-
-  useEffect(()=>{
-    localStorage.setItem("xvalues", xvalues);
-    localStorage.setItem("yvalues", yvalues);
-  }, [xvalues, yvalues])
-
   return (
-    <Center flexDirection={"column"} backgroundColor={"gray.800"} height={"100vh"}>
-      <Heading color={"white"} size={"md"}>K-Means Algorithm</Heading>
-      
-      <Flex flexDirection={"column"} align={"center"} paddingTop={"8"}>
-        
-        
-        <Flex align={"center"} marginTop={"4"}>
-          <Text color={"white"} fontWeight={"bold"}>Add Age</Text>
-          <Input textAlign={"center"} marginX={4} fontWeight={"bold"} width={"60"} color={"white"} id='value' name="value" onChange={handleChange} value={value}/> 
-          <Button width={"32"}  colorScheme={"green"} onClick={handleClick}>Add</Button>
+    <Center
+      color={"white"}
+      flexDirection={"column"}
+      paddingTop={40}
+      backgroundColor={"gray.800"}
+    >
+      <Heading>K-NN & K-Means Calculator</Heading>
+
+      <Flex>
+        <Flex
+          justify={"space-around"}
+          align={"center"}
+          flexDirection={"column"}
+          margin={"10"}
+          width={"xs"}
+          height={"sm"}
+          borderRadius={"8px"}
+          backgroundColor={"gray.700"}
+          boxShadow={"lg"}
+        >
+          <Heading size={"md"}>What is K-NN?</Heading>
+          <Text fontSize={"20"} textAlign={"justify"} marginX={"4"}>
+            KNN is a{" "}
+            <b>
+              <u>supervised</u>
+            </b>{" "}
+            machine learning algorithm that is used for{" "}
+            <b>
+              <u>classification</u>
+            </b>{" "}
+            problems. Since it is a supervised machine learning algorithm, it
+            uses labeled data to make predictions.
+          </Text>
+          <Link to={"/knn"}>
+            <Button
+              boxShadow={"xl"}
+              colorScheme={"green"}
+              fontWeight={"bold"}
+              width={"40"}
+            >
+              Try Now
+            </Button>
+          </Link>
         </Flex>
-        
-        <Flex align={"center"} flexDirection={"column"} marginTop={8} color={"white"}>
-            <Plot
-            data={[
-              {
-                x: xvalues,
-                y: yvalues,
-                mode: 'markers',
-                type: "scatter",
-                marker: {color: "red", size: "8"}
-              }
-            ]}
-            layout={ {yaxis: {range: [-1, 5]}, title:'Ages'} }
-            />
-            
-            <Link to={"/iteration"}>
-              <Button marginTop={"4"} width={"40"} colorScheme={"teal"}>Calculate</Button>
-            </Link>
-        
+
+        <Flex
+          justify={"space-around"}
+          align={"center"}
+          flexDirection={"column"}
+          margin={"10"}
+          width={"xs"}
+          height={"sm"}
+          borderRadius={"8px"}
+          backgroundColor={"gray.700"}
+          boxShadow={"lg"}
+        >
+          <Heading size={"md"}>What is K-Means?</Heading>
+          <Text fontSize={"20"} textAlign={"justify"} marginX={"4"}>
+            K-Means is an{" "}
+            <b>
+              <u>unsupervised</u>
+            </b>{" "}
+            machine learning algorithm that is used for{" "}
+            <b>
+              <u>clustering</u>
+            </b>{" "}
+            problems. Since it is an unsupervised machine learning algorithm, it
+            uses unlabelled data to make predictions.
+          </Text>
+          <Link to={"/kmeans"}>
+            <Button
+              boxShadow={"xl"}
+              colorScheme={"green"}
+              fontWeight={"bold"}
+              width={"40"}
+            >
+              Try Now
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     </Center>
-  )
+  );
 }
 
 export default Home
