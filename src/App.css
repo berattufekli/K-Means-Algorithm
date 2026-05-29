@@ -1,7 +1,4 @@
-body{
-    background-color: #1A202C;
-}
-
-html{
-    background-color: #1A202C;
+/* App-wide styles */
+body, html {
+  background-color: var(--bg-main) !important;
 }
